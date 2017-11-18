@@ -10,17 +10,24 @@ public class TeleopDrive extends Command{
 		requires(Robot.drivetrain);
 	}
 
+	double deadzone(double value) {
+		if(value <= 0.1) {
+			return 0;
+		}else {
+			return value;
+		}
+	}
 	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 	}
-
+	
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drivetrain.left1.set(OI.getLeftAxis());   //Negate with -OI.getRightAxis()
-		Robot.drivetrain.right1.set(OI.getRightAxis()); // might be -OI.getRightAxis()
+		Robot.drivetrain.left1.set(deadzone(OI.getLeftAxis()));   //Negate with -OI.getRightAxis()
+		Robot.drivetrain.right1.set(deadzone(OI.getRightAxis())); // might be -OI.getRightAxis()
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

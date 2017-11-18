@@ -8,17 +8,19 @@ public class Shifter extends Subsystem{
 	
 	static Solenoid shiftingNoid = new Solenoid(RobotMap.shifting_noid);
 	
-	public void shift() {
-		int state = 0;
+	public Shifter() {}
 
-		if(state == 0) {
-			shiftingNoid.set(true);
-			state = 1;
-		} else if(state == 1) {
-			shiftingNoid.set(false);
-			state = 0;
+		public void shift() {
+			int state = 0;
+	
+			if(state == 0) {
+				shiftingNoid.set(true);
+				state = 1;
+			} else if(state == 1) {
+				shiftingNoid.set(false);
+				state = 0;
+			}
 		}
-	}
 	
 	
 	public void initDefaultCommand() {

@@ -52,7 +52,6 @@ public class Robot extends IterativeRobot {
 		OI.arm_open.whenPressed(new armOpen());
 		OI.arm_close.whenPressed(new armClose());
 		OI.shift.whenPressed(new ShiftDrive());
-		
 	}
 
 	/**
