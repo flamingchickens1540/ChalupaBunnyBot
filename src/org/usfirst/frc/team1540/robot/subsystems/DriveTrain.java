@@ -31,7 +31,7 @@ public class DriveTrain extends Subsystem{
 		right1.changeControlMode(TalonControlMode.PercentVbus);
 		right2.changeControlMode(TalonControlMode.Follower);
 		
-		right1.reverseOutput(false);
+		right1.reverseOutput(true);
 		right2.reverseSensor(false);
 
 		

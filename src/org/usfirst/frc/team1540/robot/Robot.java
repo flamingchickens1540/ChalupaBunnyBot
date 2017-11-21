@@ -10,10 +10,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1540.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
-import org.usfirst.frc.team1540.robot.commands.RotateArm;
+
 import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
-import org.usfirst.frc.team1540.robot.commands.TeleopDrive;
+
 import org.usfirst.frc.team1540.robot.commands.armClose;
 import org.usfirst.frc.team1540.robot.commands.armOpen;
 import org.usfirst.frc.team1540.robot.subsystems.Arm;
@@ -115,10 +115,6 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		
-		new TeleopDrive().start(); //======================CHECK THIS=======================================
-		new RotateArm().start();     //======================CHECK THIS=======================================
-		
 	}
 
 	/**
