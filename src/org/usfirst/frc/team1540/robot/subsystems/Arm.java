@@ -12,15 +12,27 @@ public class Arm extends Subsystem {
 	// here. Call these from Commands.
 	static Talon armTalon = new Talon(RobotMap.armMoveNumber);
 	static Solenoid armNoid = new Solenoid(RobotMap.noid);
+
+	public Arm() { //-------------------ERRORS HERE--------------------//
+		/*
+		armTalon.changeControlMode(TalonControlMode.PercentVbus); 
+		
+		armTalon.reverseOutput(false);
+		armTalon.reverseSensor(false);
+		*/
+	}
+	
 	
 	public void armOpen() {
-		//exampleSolenoid.set(true);
-		//exampleSolenoid.set(false);
 		armNoid.set(true);
 	}
 	
 	public void armClose() {
 		armNoid.set(false);
+	}
+	
+	public void rotate(double value) {
+		armTalon.set(value);
 	}
 	
 	public void initDefaultCommand() {

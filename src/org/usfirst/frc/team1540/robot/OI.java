@@ -38,7 +38,11 @@ public class OI {
 	
 	//Controller Numbers
 	private static final int rightAxisY = 5;
+	private static final int rightAxisX = 4;
+	
 	private static final int leftAxisY = 1;
+	private static final int leftAxisX = 0;
+	
 	
 	private static final int armOpenButton = 3;
 	private static final int armCloseButton = 1;
@@ -55,6 +59,8 @@ public class OI {
 	 * Arm close: A
 	 * Intake start: Y
 	 * Intake stop: B
+	 * 
+	 * Rotate Arm: left thumbstick
 	 */
 	
 	public static Joystick driver = new Joystick(0);
@@ -65,6 +71,7 @@ public class OI {
 	static Button arm_open = new JoystickButton(copilot, armOpenButton);
 	static Button intake_start = new JoystickButton(copilot, intakeStartButton);
 	static Button shift = new JoystickButton(driver, shiftingButton);
+	
 	
 	public static double getRightAxis() {
 		return driver.getRawAxis(rightAxisY);
@@ -81,6 +88,10 @@ public class OI {
 	public static double CoPilotgetLeftAxis() {
 		return copilot.getRawAxis(leftAxisY);
 	}
+	public static double CoPilotgetLeftAxisX() {
+		return copilot.getRawAxis(leftAxisX);
+	}
+	
 
 
 	

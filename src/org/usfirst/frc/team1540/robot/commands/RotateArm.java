@@ -1,8 +1,13 @@
 package org.usfirst.frc.team1540.robot.commands;
-import org.usfirst.frc.team1540.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team1540.robot.OI;
+import org.usfirst.frc.team1540.robot.Robot;
+
+/**
+ *
+ */
 public class RotateArm extends Command {
 	public RotateArm() {
 		// Use requires() here to declare subsystem dependencies
@@ -17,6 +22,7 @@ public class RotateArm extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
+		Robot.bucket_arm.rotate(OI.CoPilotgetLeftAxis()); //Could be -OI
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
