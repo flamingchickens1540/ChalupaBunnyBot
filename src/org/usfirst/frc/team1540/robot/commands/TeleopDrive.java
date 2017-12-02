@@ -11,9 +11,9 @@ public class TeleopDrive extends Command{
 	}
 
 	double deadzone(double value) {
-		if(value <= 0.1) {
+		if(Math.abs(value) <= 0.2) {
 			return 0;
-		}else {
+		}else { 
 			return value;
 		}
 	}
@@ -26,8 +26,8 @@ public class TeleopDrive extends Command{
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drivetrain.left1.set(deadzone(OI.getLeftAxis()));   //Negate with -OI.getRightAxis()
-		Robot.drivetrain.right1.set(deadzone(OI.getRightAxis())); // might be -OI.getRightAxis()
+		Robot.drivetrain.left1.set(deadzone(OI.getDriverLeftStickUpDown()));
+		Robot.drivetrain.right1.set(deadzone(-OI.getDriverRightStickUpDown()));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

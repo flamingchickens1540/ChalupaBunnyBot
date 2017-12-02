@@ -8,14 +8,15 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1540.robot.commands.ArmDown;
+import org.usfirst.frc.team1540.robot.commands.ArmUp;
 import org.usfirst.frc.team1540.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
 
 import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
 
-import org.usfirst.frc.team1540.robot.commands.armClose;
-import org.usfirst.frc.team1540.robot.commands.armOpen;
+
 import org.usfirst.frc.team1540.robot.subsystems.Arm;
 import org.usfirst.frc.team1540.robot.subsystems.DriveTrain;
 //import org.usfirst.frc.team1540.robot.subsystems.ExampleSubsystem;
@@ -47,14 +48,14 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("My Auto", new ExampleCommand()); //addObject is the one for adding the options.
 		SmartDashboard.putData("Auto mode", chooser);
 		
-		OI.intake_rev.whenPressed(new RevIntake());
-		OI.intake_start.whenPressed(new StartIntake());
+		OI.intake_rev.whileHeld(new RevIntake());
+		OI.intake.whileHeld(new StartIntake());
 		
-		OI.arm_open.whenPressed(new armOpen());
-		OI.arm_close.whenPressed(new armClose());
 		OI.shift.whenPressed(new ShiftDrive());
+		OI.armUpButton.whenPressed(new ArmUp());
+		OI.armDownButton.whenPressed(new ArmDown());
 		
-		
+		shifter.reset();
 	}
 
 	/**
@@ -123,6 +124,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		//System.out.println(bucket_arm.encoderCount());
 		
 	}
 

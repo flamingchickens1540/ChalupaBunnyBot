@@ -1,10 +1,15 @@
 package org.usfirst.frc.team1540.robot.commands;
-import org.usfirst.frc.team1540.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class armClose extends Command {
-	
-	public armClose() {
+//import org.usfirst.frc.team1540.robot.OI;
+import org.usfirst.frc.team1540.robot.Robot;
+
+/**
+ *
+ */
+public class ArmDown extends Command {
+	public ArmDown() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.bucket_arm); //The object initialized in robot.java
 	}
@@ -17,7 +22,9 @@ public class armClose extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.bucket_arm.armClose();
+		while(Robot.bucket_arm.getEncoderRate() > 10) {
+			Robot.bucket_arm.moveDown();
+		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
 /*
  * Button Mapping
  * X: 3
@@ -36,63 +37,76 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI {
 	
-	//Controller Numbers
-	private static final int rightAxisY = 5;
-	private static final int rightAxisX = 4;
+	private static final int rightJoystickUpDown = 5;
+	private static final int rightJoystickLeftRight = 4;
 	
-	private static final int leftAxisY = 1;
-	private static final int leftAxisX = 0;
+	private static final int leftJoystickUpDown = 1;
+	private static final int leftJoystickLeftRight = 0;
+	
+	private static final int intakeRevButton = 2;//B
+	private static final int intakeStartButton = 4;//Y
+	
+	private static final int shiftingButton = 6; //Right Bumper
 	
 	
-	private static final int armOpenButton = 3;
-	private static final int armCloseButton = 1;
-	
-	private static final int intakeRevButton = 2;
-	private static final int intakeStartButton = 4;
-	
-	private static final int shiftingButton = 6;
+	private static final int ArmUpButtonNumber = 3; //X
+	private static final int ArmDownButtonNumber = 4; //Y
 	
 	/* CONTROLS
 	 * 
 	 * Co-Pilot:
-	 * Arm open: X
-	 * Arm close: A
-	 * Intake start: Y
-	 * Intake stop: B
+	 * Intake (Hold to spin): Y
+	 * Intake Rev (Hold to spin): B
 	 * 
 	 * Rotate Arm: left thumbstick
 	 */
 	
 	public static Joystick driver = new Joystick(0);
 	public static Joystick copilot = new Joystick(1);
-	
-	static Button arm_close = new JoystickButton(copilot, armCloseButton);
-	static Button intake_rev = new JoystickButton(copilot, intakeRevButton);
-	static Button arm_open = new JoystickButton(copilot, armOpenButton);
-	static Button intake_start = new JoystickButton(copilot, intakeStartButton);
-	static Button shift = new JoystickButton(driver, shiftingButton);
-	
-	
-	public static double getRightAxis() {
-		return driver.getRawAxis(rightAxisY);
-	}
-	
-	public static double getLeftAxis() {
-		return driver.getRawAxis(leftAxisY);
-	}
-	
-	public static double CoPilotgetRightAxis() {
-		return copilot.getRawAxis(rightAxisY);
-	}
-	
-	public static double CoPilotgetLeftAxis() {
-		return copilot.getRawAxis(leftAxisY);
-	}
-	public static double CoPilotgetLeftAxisX() {
-		return copilot.getRawAxis(leftAxisX);
-	}
-	
 
+	static Button intake_rev = new JoystickButton(copilot, intakeRevButton);
+	static Button intake = new JoystickButton(copilot, intakeStartButton);
+	static Button shift = new JoystickButton(driver, shiftingButton);
+
+	static Button armUpButton = new JoystickButton(copilot, ArmUpButtonNumber);
+	static Button armDownButton = new JoystickButton(copilot, ArmDownButtonNumber);
+
+
+	
+	public static double getDriverLeftStickUpDown() {
+		return driver.getRawAxis(leftJoystickUpDown);
+	}
+	
+	public static double getDriverLeftStickLeftRight() {
+		return driver.getRawAxis(leftJoystickLeftRight);
+	}
+	
+	public static double getDriverRightStickUpDown() {
+		return driver.getRawAxis(rightJoystickUpDown);
+	}
+	
+	public static double getDriverRightStickLeftRight() {
+		return driver.getRawAxis(rightJoystickLeftRight);
+	}
+
+
+	//Copilot Axis
+
+	public static double getCopilotLeftStickUpDown() {
+		return copilot.getRawAxis(leftJoystickUpDown);
+	}
+	
+	public static double getCopilotLeftStickLeftRight() {
+		return copilot.getRawAxis(leftJoystickLeftRight);
+	}
+	
+	public static double getCopilotRightStickUpDown() {
+		return copilot.getRawAxis(rightJoystickUpDown);
+	}
+	
+	public static double getCopilotRightStickLeftRight() {
+		return copilot.getRawAxis(rightJoystickLeftRight);
+	}
 
 	
 	//// CREATING BUTTONS

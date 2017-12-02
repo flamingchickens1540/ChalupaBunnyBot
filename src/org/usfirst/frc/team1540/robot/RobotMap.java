@@ -29,5 +29,5 @@ public class RobotMap {
 	public static final int noid = 2;
 	public static final int shifting_noid = 1;
 
-	public static final int intake = 6;
+	public static final int intake = 0;
 }

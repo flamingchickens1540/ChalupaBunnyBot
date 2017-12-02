@@ -1,17 +1,16 @@
 package org.usfirst.frc.team1540.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1540.robot.OI;
 import org.usfirst.frc.team1540.robot.Robot;
 
 /**
  *
  */
-public class RotateArm extends Command {
-	public RotateArm() {
-		// Use requires() here to declare subsystem dependencies
-		requires(Robot.bucket_arm); //The object initialized in robot.java
+public class SmartDashboardConfigs extends Command {
+	public SmartDashboardConfigs() {
+		//requires(Robot.bucket_arm); //The object initialized in robot.java
 	}
 
 	// Called just before this Command runs the first time
@@ -22,7 +21,7 @@ public class RotateArm extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.bucket_arm.rotate(OI.getCopilotLeftStickUpDown()); //Could be -OI
+		SmartDashboard.putNumber("Encoder Count", Robot.bucket_arm.encoderCount());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

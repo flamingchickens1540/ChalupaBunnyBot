@@ -1,10 +1,15 @@
 package org.usfirst.frc.team1540.robot.commands;
-import org.usfirst.frc.team1540.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
-public class armOpen extends Command {
-	
-	public armOpen() {
+//import org.usfirst.frc.team1540.robot.OI;
+import org.usfirst.frc.team1540.robot.Robot;
+
+/**
+ *
+ */
+public class ArmUp extends Command {
+	public ArmUp() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.bucket_arm); //The object initialized in robot.java
 	}
@@ -17,7 +22,10 @@ public class armOpen extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.bucket_arm.armOpen();
+		while(Robot.bucket_arm.getEncoderRate() < 10) {
+			Robot.bucket_arm.moveUp();
+		}
+		
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
