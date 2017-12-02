@@ -6,14 +6,18 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Intake extends Subsystem {
 	
 	private Talon intakeTalon = new Talon(RobotMap.intake);
-	public Intake() {}
+	//public Intake() {}
 	
 	public void start_intake() { //Just spin both motors at full speed
-		intakeTalon.set(1);
+		intakeTalon.set(1.0);
 	}
 	
 	public void rev_intake() {
-		intakeTalon.set(-1);
+		intakeTalon.set(-1.0);
+	}
+	
+	public void stop_intake() {
+		intakeTalon.set(0);
 	}
 	
 		// Put methods for controlling this subsystem

@@ -3,23 +3,17 @@ package org.usfirst.frc.team1540.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-//import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1540.robot.commands.ArmDown;
-import org.usfirst.frc.team1540.robot.commands.ArmUp;
 import org.usfirst.frc.team1540.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
-
 import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
-
-
 import org.usfirst.frc.team1540.robot.subsystems.Arm;
 import org.usfirst.frc.team1540.robot.subsystems.DriveTrain;
-//import org.usfirst.frc.team1540.robot.subsystems.ExampleSubsystem;
+
 import org.usfirst.frc.team1540.robot.subsystems.Intake;
 import org.usfirst.frc.team1540.robot.subsystems.Shifter;
 
@@ -47,14 +41,15 @@ public class Robot extends IterativeRobot {
 		chooser.addDefault("Default Auto", new ExampleCommand()); //Main auto command. addDefault is the one if nothing else is chosen
 		chooser.addObject("My Auto", new ExampleCommand()); //addObject is the one for adding the options.
 		SmartDashboard.putData("Auto mode", chooser);
+
 		
 		OI.intake_rev.whileHeld(new RevIntake());
 		OI.intake.whileHeld(new StartIntake());
 		
-		OI.shift.whenPressed(new ShiftDrive());
-		OI.armUpButton.whenPressed(new ArmUp());
-		OI.armDownButton.whenPressed(new ArmDown());
-		
+		OI.shift.whenPressed(new ShiftDrive()); //IDK if works
+//		OI.armUpButton.whenPressed(new ArmUp());
+//		OI.armDownButton.whenPressed(new ArmDown());
+
 		shifter.reset();
 	}
 

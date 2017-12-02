@@ -26,8 +26,8 @@ public class TeleopDrive extends Command{
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drivetrain.left1.set(deadzone(OI.getDriverLeftStickUpDown()));
-		Robot.drivetrain.right1.set(deadzone(-OI.getDriverRightStickUpDown()));
+		Robot.drivetrain.right1.set(deadzone(-OI.getDriverLeftStickUpDown()));
+		Robot.drivetrain.left1.set(deadzone(OI.getDriverRightStickUpDown()));
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

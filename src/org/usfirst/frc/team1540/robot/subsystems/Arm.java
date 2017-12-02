@@ -8,7 +8,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Arm extends Subsystem {
 	
-	Talon armTalon = new Talon(RobotMap.armMoveNumber);
+	public Talon armTalon = new Talon(RobotMap.armMoveNumber);
+	
 	Encoder armEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	
 	public Arm() {		
@@ -23,13 +24,6 @@ public class Arm extends Subsystem {
 		armEncoder.reset();
 	}
 	
-	public void moveUp() {
-		armTalon.set(-0.5);
-	}
-	
-	public void moveDown() {
-		armTalon.set(0.5);
-	}
 	
 	public int encoderCount() {
 		int count = armEncoder.get();
@@ -51,13 +45,16 @@ public class Arm extends Subsystem {
 		return rate;
 	}
 
-	//double distance = armEncoder.getRaw();
-	//double distance = armEncoder.getDistance();
-	//double period = armEncoder.getPeriod();
-
-
 	public void rotate(double value) {
 		armTalon.set(value);
+	}
+	
+	public void moveUp() {
+		armTalon.set(-0.5);
+	}
+	
+	public void moveDown() {
+		armTalon.set(0.5);
 	}
 	
 	public void initDefaultCommand() {
