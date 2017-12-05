@@ -24,6 +24,7 @@ import org.usfirst.frc.team1540.robot.subsystems.Shifter;
  * creating this project, you must also update the manifest file in the resource
  * directory.
  */
+
 public class Robot extends IterativeRobot {
 
 	public static final Shifter shifter = new Shifter();
@@ -42,7 +43,6 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("My Auto", new ExampleCommand()); //addObject is the one for adding the options.
 		SmartDashboard.putData("Auto mode", chooser);
 
-		
 		OI.intake_rev.whileHeld(new RevIntake());
 		OI.intake.whileHeld(new StartIntake());
 		
@@ -51,6 +51,7 @@ public class Robot extends IterativeRobot {
 //		OI.armDownButton.whenPressed(new ArmDown());
 
 		shifter.reset();
+		bucket_arm.reset();
 	}
 
 	/**
@@ -119,8 +120,8 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
-		//System.out.println(bucket_arm.encoderCount());
-		
+		//System.out.println(bucket_arm.encoderGet());
+		//System.out.println(Robot.intake.getCurrent());		
 	}
 
 	/**

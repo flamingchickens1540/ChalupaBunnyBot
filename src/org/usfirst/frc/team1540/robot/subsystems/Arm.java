@@ -20,12 +20,20 @@ public class Arm extends Subsystem {
 		armEncoder.setSamplesToAverage(7);
 	}
 	
+	public double softStop(double value) {
+		if((armEncoder.get() < -700 && value < 0)  || (armEncoder.get() > -70 && value > 0)) {
+			return 0;
+		}else {
+			return value;
+		}
+	}
+
+	
 	public void reset() {
 		armEncoder.reset();
 	}
 	
-	
-	public int encoderCount() {
+	public int encoderGet() {
 		int count = armEncoder.get();
 		return count;
 	}
