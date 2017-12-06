@@ -25,9 +25,15 @@ deploy {
 
 // Defining my dependencies. In this case, WPILib (+ friends), CTRE Toolsuite (Talon SRX)
 // and NavX.
+
+//repositories {
+//     maven { url 'https://jitpack.io' }
+//}
+
 dependencies {
     compile wpilib()
     compile ctre()
+    //compile 'com.github.flamingchickens1540:reference-libraries:gradle-integration-SNAPSHOT'
 }
 
 // Setting up my Jar File. In this case, adding all libraries into the main jar ('fat jar')

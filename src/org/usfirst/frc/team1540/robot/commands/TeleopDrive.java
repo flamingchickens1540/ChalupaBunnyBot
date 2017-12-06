@@ -2,7 +2,6 @@ package org.usfirst.frc.team1540.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team1540.robot.Robot;
-import org.usfirst.frc.team1540.robot.OI;
 
 public class TeleopDrive extends Command{
 
@@ -10,14 +9,6 @@ public class TeleopDrive extends Command{
 		requires(Robot.drivetrain);
 	}
 
-	double deadzone(double value) {
-		if(Math.abs(value) <= 0.2) {
-			return 0;
-		}else { 
-			return value;
-		}
-	}
-	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
@@ -26,8 +17,7 @@ public class TeleopDrive extends Command{
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drivetrain.right1.set(deadzone(-OI.getDriverLeftStickUpDown()));
-		Robot.drivetrain.left1.set(deadzone(OI.getDriverRightStickUpDown()));
+		Robot.drivetrain.drive();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

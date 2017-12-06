@@ -1,5 +1,8 @@
 package org.usfirst.frc.team1540.robot.subsystems;
+import org.usfirst.frc.team1540.robot.OI;
 import org.usfirst.frc.team1540.robot.RobotMap;
+import org.usfirst.frc.team1540.robot.Utils;
+
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -26,8 +29,9 @@ public class Intake extends Subsystem {
 		intakeTalon.set(0);
 	}
 	
-		// Put methods for controlling this subsystem
-		// here. Call these from Commands.
+	public void JoystickIntake() {
+		intakeTalon.set(Utils.deadzone(-OI.getCopilotRightStickUpDown()));
+	}
 	
 	public void initDefaultCommand() {
 		

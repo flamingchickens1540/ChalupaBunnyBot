@@ -11,10 +11,12 @@ import org.usfirst.frc.team1540.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
 import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
+import org.usfirst.frc.team1540.robot.commands.TurnOnLeds;
 import org.usfirst.frc.team1540.robot.subsystems.Arm;
 import org.usfirst.frc.team1540.robot.subsystems.DriveTrain;
 
 import org.usfirst.frc.team1540.robot.subsystems.Intake;
+import org.usfirst.frc.team1540.robot.subsystems.LEDs;
 import org.usfirst.frc.team1540.robot.subsystems.Shifter;
 
 /**
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static final Arm bucket_arm = new Arm();
 	public static final Intake intake = new Intake();
+	public static LEDs led = new LEDs();
 	public static OI oi;
 
 	Command autonomousCommand;
@@ -52,6 +55,7 @@ public class Robot extends IterativeRobot {
 
 		shifter.reset();
 		bucket_arm.reset();
+		new TurnOnLeds();
 	}
 
 	/**
@@ -120,6 +124,19 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		
+//		if(OI.getCopilotRightStickUpDown() < 0.2) {
+//			Robot.intake.start_intake();
+//		}else {
+//			Robot.intake.stop_intake();
+//		}
+//		
+//		if(OI.getCopilotRightStickUpDown() < -0.2) {
+//			Robot.intake.rev_intake();
+//		}else {
+//			Robot.intake.stop_intake();
+//		}
+		
 		//System.out.println(bucket_arm.encoderGet());
 		//System.out.println(Robot.intake.getCurrent());		
 	}

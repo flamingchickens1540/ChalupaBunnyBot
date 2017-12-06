@@ -2,7 +2,10 @@ package org.usfirst.frc.team1540.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
+import org.usfirst.frc.team1540.robot.OI;
+import org.usfirst.frc.team1540.robot.Robot;
 import org.usfirst.frc.team1540.robot.RobotMap;
+import org.usfirst.frc.team1540.robot.Utils;
 import org.usfirst.frc.team1540.robot.commands.TeleopDrive;
 
 import com.ctre.CANTalon;
@@ -40,6 +43,26 @@ public class DriveTrain extends Subsystem{
 
 	}
 	
+	public void drive() {
+		double triggerValue = OI.getDriverLeftTrigger() + -OI.getDriverRightTrigger();
+		setRight(Utils.deadzone(-OI.getDriverLeftStickUpDown()) + triggerValue);
+		setLeft(Utils.deadzone(-OI.getDriverRightStickUpDown()) + triggerValue);
+	}
+	
+//	void triggerDrive(double trigger) {
+//		Robot.drivetrain.left1.set(trigger);
+//		Robot.drivetrain.left1.set(trigger);
+//	}
+	
+	void setLeft(double value) {
+		Robot.drivetrain.left1.set(-1 * value);
+	}
+	
+	void setRight(double value) {
+		Robot.drivetrain.right1.set(value);
+	}
+	
+
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		setDefaultCommand(new TeleopDrive());
