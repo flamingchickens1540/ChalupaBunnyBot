@@ -9,9 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1540.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
-import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
+//import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
+import org.usfirst.frc.team1540.robot.commands.ShiftFalse;
+import org.usfirst.frc.team1540.robot.commands.ShiftTrue;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
-import org.usfirst.frc.team1540.robot.commands.TurnOnLeds;
+import org.usfirst.frc.team1540.robot.commands.Turn;
+//import org.usfirst.frc.team1540.robot.commands.TurnOnLeds;
 import org.usfirst.frc.team1540.robot.subsystems.Arm;
 import org.usfirst.frc.team1540.robot.subsystems.DriveTrain;
 
@@ -42,20 +45,24 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void robotInit() {
 		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand()); //Main auto command. addDefault is the one if nothing else is chosen
+		chooser.addDefault("Default Auto", new Turn()); //Main auto command. addDefault is the one if nothing else is chosen
 		chooser.addObject("My Auto", new ExampleCommand()); //addObject is the one for adding the options.
 		SmartDashboard.putData("Auto mode", chooser);
 
 		OI.intake_rev.whileHeld(new RevIntake());
 		OI.intake.whileHeld(new StartIntake());
 		
-		OI.shift.whenPressed(new ShiftDrive()); //IDK if works
+		//OI.shift.whenPressed(new ShiftDrive()); //IDK if works
+		
+		OI.shiftup.whenPressed(new ShiftTrue());
+		OI.shiftdown.whenPressed(new ShiftFalse());
+		
 //		OI.armUpButton.whenPressed(new ArmUp());
 //		OI.armDownButton.whenPressed(new ArmDown());
 
-		shifter.reset();
+		//shifter.reset();
 		bucket_arm.reset();
-		new TurnOnLeds();
+		//new TurnOnLeds();
 	}
 
 	/**
@@ -137,7 +144,7 @@ public class Robot extends IterativeRobot {
 //			Robot.intake.stop_intake();
 //		}
 		
-		//System.out.println(bucket_arm.encoderGet());
+		System.out.println(bucket_arm.encoderGet());
 		//System.out.println(Robot.intake.getCurrent());		
 	}
 

@@ -21,11 +21,18 @@ public class Shifter extends Subsystem{
 			state = 0;
 		}
 	}
+	
+	public void on() {
+		shiftingNoid.set(true);
+	}
+	
+	public void off() {
+		shiftingNoid.set(false);
+	}
 
 	public void reset() {
-		state = 0;
-		shiftingNoid.set(false);
-		
+		state = 1;
+		shiftingNoid.set(false);	
 	}
 	
 	public void initDefaultCommand() {

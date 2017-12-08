@@ -1,30 +1,27 @@
 package org.usfirst.frc.team1540.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1540.robot.Robot;
 
-public class StartIntake extends Command {
-	public StartIntake() {
+public class ShiftFalse extends Command {
+	public ShiftFalse() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.intake); //The object initialized in robot.java
+		requires(Robot.shifter); //The object initialized in robot.java
+		requires(Robot.led);
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.intake.start_intake();
+		Robot.shifter.off();
+		System.out.println("Shifter: False");
+		Robot.led.off();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("Intake Current", Robot.intake.getCurrent());
 		
-		if(Robot.intake.getCurrent() > 3) {
-			Robot.led.flash();
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
@@ -42,6 +39,5 @@ public class StartIntake extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.intake.stop_intake();
 	}
 }

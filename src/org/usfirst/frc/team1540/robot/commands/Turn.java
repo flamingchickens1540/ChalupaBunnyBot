@@ -1,36 +1,39 @@
 package org.usfirst.frc.team1540.robot.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1540.robot.Robot;
+import org.usfirst.frc.team1540.robot.Utils;
 
-public class StartIntake extends Command {
-	public StartIntake() {
+/**
+ *
+ */
+public class Turn extends Command {
+	boolean is_it_done_yet = false;
+	
+	public Turn() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.intake); //The object initialized in robot.java
+		requires(Robot.drivetrain); //The object initialized in robot.java
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Robot.intake.start_intake();
+		Utils.initGyro();
+		Utils.turn(45);
+		is_it_done_yet = true;
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		SmartDashboard.putNumber("Intake Current", Robot.intake.getCurrent());
-		
-		if(Robot.intake.getCurrent() > 3) {
-			Robot.led.flash();
-		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		//return false;
+		return is_it_done_yet;
 	}
 
 	// Called once after isFinished returns true
@@ -42,6 +45,5 @@ public class StartIntake extends Command {
 	// subsystems is scheduled to run
 	@Override
 	protected void interrupted() {
-		Robot.intake.stop_intake();
 	}
 }

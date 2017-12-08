@@ -52,6 +52,9 @@ public class OI {
 	private static final int ArmUpButtonNumber = 3; //X
 	private static final int ArmDownButtonNumber = 4; //Y
 	
+	private static final int ShiftUpButton = 5; //LB
+	private static final int ShiftDownButton = 6; //RB
+	
 	private static final int leftTrigger = 3;
 	private static final int rightTrigger = 2;
 	
@@ -73,6 +76,9 @@ public class OI {
 
 	static Button armUpButton = new JoystickButton(copilot, ArmUpButtonNumber);
 	static Button armDownButton = new JoystickButton(copilot, ArmDownButtonNumber);
+	
+	static Button shiftup = new JoystickButton(driver, ShiftUpButton);
+	static Button shiftdown = new JoystickButton(driver, ShiftDownButton);
 
 	public static double getDriverLeftStickUpDown() {
 		return driver.getRawAxis(leftJoystickUpDown);

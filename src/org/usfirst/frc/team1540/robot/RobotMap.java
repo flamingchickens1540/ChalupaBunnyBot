@@ -19,5 +19,5 @@ public class RobotMap {
 	public static final int shifting_noid = 1;
 
 	public static final int intake = 0;
-	public static int ledTalonPort = 3;
+	public static final int ledTalonPort = 3;
 }

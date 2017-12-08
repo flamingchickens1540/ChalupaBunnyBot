@@ -21,7 +21,8 @@ public class Arm extends Subsystem {
 	}
 	
 	public double softStop(double value) {
-		if((armEncoder.get() < -700 && value < 0)  || (armEncoder.get() > -70 && value > 0)) {
+		//TODO: Check threshold values
+		if((armEncoder.get() < -700 && value < 0)  || (armEncoder.get() > -70 && value > 0)) { //-300 was -70
 			return 0;
 		}else {
 			return value;
