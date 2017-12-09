@@ -6,7 +6,7 @@ public class AutoCommands extends CommandGroup {
 	
 	public AutoCommands() {
 		//addSequential(new StraightForTime(2));
-		addSequential(new TurnWithGyro(90));
+		//addSequential(new TurnWithGyro(90));
+		addSequential(new TurnForTime(10, "R"));
 	}	
-	
 }
