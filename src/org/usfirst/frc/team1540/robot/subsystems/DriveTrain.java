@@ -54,11 +54,11 @@ public class DriveTrain extends Subsystem{
 //		Robot.drivetrain.left1.set(trigger);
 //	}
 	
-	void setLeft(double value) {
+	public void setLeft(double value) {
 		Robot.drivetrain.left1.set(-1 * value);
 	}
 	
-	void setRight(double value) {
+	public void setRight(double value) {
 		Robot.drivetrain.right1.set(value);
 	}
 	

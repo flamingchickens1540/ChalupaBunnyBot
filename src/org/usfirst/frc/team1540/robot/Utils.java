@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 public class Utils {
 	static Timer timer = new Timer();
 	
-	private static Gyro gyro;
+	public static Gyro gyro;
 	
 	public static double deadzone(double value) {
 		if(Math.abs(value) <= 0.2) {
@@ -67,10 +67,10 @@ public class Utils {
 			error = degrees - gyro.getAngle();
 			
 			if(getAngle() < degrees) {
-				Robot.drivetrain.left1.set(-0.2);
+				Robot.drivetrain.left1.set(0.2);
 				Robot.drivetrain.right1.set(0.2);
 			}else {
-				Robot.drivetrain.left1.set(0.2);
+				Robot.drivetrain.left1.set(-0.2);
 				Robot.drivetrain.right1.set(-0.2);
 			}
 		}
@@ -83,7 +83,7 @@ public class Utils {
 		gyro.reset();
 		
 		while(timer.get() < time) {
-			if(Math.abs(getAngle()) > 70) {
+			if(Math.abs(getAngle()) > 5) {
 				
 				if(getAngle() > 0) {
 					Robot.drivetrain.left1.set(0.2);

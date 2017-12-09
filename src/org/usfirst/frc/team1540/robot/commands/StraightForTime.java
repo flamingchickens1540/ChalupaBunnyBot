@@ -1,28 +1,22 @@
 package org.usfirst.frc.team1540.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.TimedCommand;
 
 import org.usfirst.frc.team1540.robot.Robot;
-import org.usfirst.frc.team1540.robot.Utils;
 
-/**
- *
- */
-public class Turn extends Command {
-	boolean is_it_done_yet = false;
+public class StraightForTime extends TimedCommand {
 	
-	public Turn() {
+	public StraightForTime(double seconds) {
+		super(seconds);
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.drivetrain); //The object initialized in robot.java
 	}
-
+	
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
-		Utils.initGyro();
-		//Utils.turn_nopid(45);
-		Utils.turn_nopid(45);
-
+		Robot.drivetrain.left1.set(-0.5);
+		Robot.drivetrain.right1.set(0.5);
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -30,16 +24,11 @@ public class Turn extends Command {
 	protected void execute() {
 	}
 
-	// Make this return true when this Command no longer needs to run execute()
-	@Override
-	protected boolean isFinished() {
-		//return false;
-		return is_it_done_yet;
-	}
-
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		Robot.drivetrain.left1.set(0);
+		Robot.drivetrain.right1.set(0);
 	}
 
 	// Called when another command which requires one or more of the same
