@@ -20,7 +20,8 @@ public class Turn extends Command {
 	@Override
 	protected void initialize() {
 		Utils.initGyro();
-		Utils.turn(45);
+		//Utils.turn_nopid(45);
+		Utils.straight(0.5);
 		is_it_done_yet = true;
 	}
 

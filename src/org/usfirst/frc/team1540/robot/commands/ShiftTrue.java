@@ -9,7 +9,7 @@ public class ShiftTrue extends Command {
 	public ShiftTrue() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.shifter); //The object initialized in robot.java
-		requires(Robot.led);
+		//requires(Robot.led);
 	}
 
 	// Called just before this Command runs the first time
@@ -23,7 +23,7 @@ public class ShiftTrue extends Command {
 	protected void execute() {
 		Robot.shifter.on();
 		System.out.println("Shifter: True");
-		Robot.led.on();
+		//Robot.led.on();
 		isItDoneYet = true;
 	}
 

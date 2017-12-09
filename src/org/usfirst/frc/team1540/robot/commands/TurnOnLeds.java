@@ -5,7 +5,7 @@ import org.usfirst.frc.team1540.robot.Robot;
 public class TurnOnLeds extends Command {
 	public TurnOnLeds() {
 		// Use requires() here to declare subsystem dependencies
-		requires(Robot.led); //The object initialized in robot.java
+		//requires(Robot.led); //The object initialized in robot.java
 	}
 
 	// Called just before this Command runs the first time
@@ -16,7 +16,7 @@ public class TurnOnLeds extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.led.on();
+		//Robot.led.on();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

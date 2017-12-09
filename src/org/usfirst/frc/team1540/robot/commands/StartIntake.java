@@ -23,7 +23,7 @@ public class StartIntake extends Command {
 		SmartDashboard.putNumber("Intake Current", Robot.intake.getCurrent());
 		
 		if(Robot.intake.getCurrent() > 3) {
-			Robot.led.flash();
+			//Robot.led.flash();
 		}
 	}
 

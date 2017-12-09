@@ -7,7 +7,7 @@ public class ShiftFalse extends Command {
 	public ShiftFalse() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.shifter); //The object initialized in robot.java
-		requires(Robot.led);
+		//requires(Robot.led);
 	}
 
 	// Called just before this Command runs the first time
@@ -15,7 +15,7 @@ public class ShiftFalse extends Command {
 	protected void initialize() {
 		Robot.shifter.off();
 		System.out.println("Shifter: False");
-		Robot.led.off();
+		//Robot.led.off();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

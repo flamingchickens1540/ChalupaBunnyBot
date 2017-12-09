@@ -36,7 +36,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain drivetrain = new DriveTrain();
 	public static final Arm bucket_arm = new Arm();
 	public static final Intake intake = new Intake();
-	public static LEDs led = new LEDs();
+	//public static LEDs led = new LEDs();
 	public static OI oi;
 
 	Command autonomousCommand;

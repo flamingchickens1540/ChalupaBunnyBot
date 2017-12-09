@@ -10,7 +10,8 @@ public class Arm extends Subsystem {
 	
 	public Talon armTalon = new Talon(RobotMap.armMoveNumber);
 	
-	Encoder armEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	//Encoder armEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+	Encoder armEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 	
 	public Arm() {		
 		armEncoder.setMaxPeriod(0.1);
@@ -19,17 +20,22 @@ public class Arm extends Subsystem {
 		armEncoder.setReverseDirection(true);
 		armEncoder.setSamplesToAverage(7);
 	}
+
+//Uncomment to add softstops
+//	public double softStop(double value) {
+//		//TODO: Check threshold values
+//		if((armEncoder.get() < -700 && value < 0) || (armEncoder.get() > -70 && value > 0)) { //-300 was -70
+//			return 0;
+//		}else {
+//			return value;
+//		}
+//	}
 	
+
 	public double softStop(double value) {
-		//TODO: Check threshold values
-		if((armEncoder.get() < -700 && value < 0)  || (armEncoder.get() > -70 && value > 0)) { //-300 was -70
-			return 0;
-		}else {
-			return value;
-		}
+		return value;
 	}
 
-	
 	public void reset() {
 		armEncoder.reset();
 	}
