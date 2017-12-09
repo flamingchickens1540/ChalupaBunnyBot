@@ -24,7 +24,7 @@ public class TurnForTime extends TimedCommand {
 			Robot.drivetrain.left1.set(-0.5);
 			Robot.drivetrain.right1.set(-0.5);
 		}else {
-			throw new java.lang.Error("Direction Error.");
+			throw new java.lang.Error("Team1540 Chalupa: Direction Error.");
 		}
 	}
 
