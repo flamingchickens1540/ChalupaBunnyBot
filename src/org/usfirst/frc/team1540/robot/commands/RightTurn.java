@@ -52,8 +52,8 @@ public class RightTurn extends Command {
     // as the centre
     modifier.modify(wheelbaseWidth);
 
-    EncoderFollower left = new EncoderFollower(modifier.getLeftTrajectory());
-    EncoderFollower right = new EncoderFollower(modifier.getRightTrajectory());
+    left = new EncoderFollower(modifier.getLeftTrajectory());
+    right = new EncoderFollower(modifier.getRightTrajectory());
   }
 
   protected void execute() {

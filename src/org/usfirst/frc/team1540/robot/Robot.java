@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import org.team1540.base.power.PowerManager;
 import org.usfirst.frc.team1540.robot.commands.AutoCommands;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
 //import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
@@ -61,6 +62,7 @@ public class Robot extends IterativeRobot {
     //shifter.reset();
     bucket_arm.reset();
     //new TurnOnLeds();
+    PowerManager.getInstance().setRunning(false);
   }
 
   /**
