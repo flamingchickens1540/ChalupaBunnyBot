@@ -3,13 +3,12 @@ package org.usfirst.frc.team1540.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.team1540.base.power.PowerManager;
-import org.usfirst.frc.team1540.robot.commands.AutoCommands;
 import org.usfirst.frc.team1540.robot.commands.RevIntake;
 //import org.usfirst.frc.team1540.robot.commands.ShiftDrive;
-import org.usfirst.frc.team1540.robot.commands.RightTurn;
+import org.usfirst.frc.team1540.robot.commands.Path;
 import org.usfirst.frc.team1540.robot.commands.ShiftFalse;
 import org.usfirst.frc.team1540.robot.commands.ShiftTrue;
 import org.usfirst.frc.team1540.robot.commands.StartIntake;
@@ -106,7 +105,7 @@ public class Robot extends IterativeRobot {
 //		autonomousCommand = new AutoCommands();
 
 //		autonomousCommand.start();
-    Scheduler.getInstance().add(new RightTurn());
+    Scheduler.getInstance().add(new Path());
 
   }
 
@@ -115,6 +114,10 @@ public class Robot extends IterativeRobot {
    */
   @Override
   public void autonomousPeriodic() {
+    SmartDashboard.putNumber("lEnc", Robot.drivetrain.left1.getQuadraturePosition());
+    SmartDashboard.putNumber("rEnc", Robot.drivetrain.right1.getQuadraturePosition());
+    SmartDashboard.putNumber("lVelocity", Robot.drivetrain.left1.getQuadratureVelocity());
+    SmartDashboard.putNumber("rVelocity", Robot.drivetrain.right1.getQuadratureVelocity());
     Scheduler.getInstance().run();
   }
 

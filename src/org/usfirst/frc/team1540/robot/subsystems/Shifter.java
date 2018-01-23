@@ -21,11 +21,17 @@ public class Shifter extends Subsystem{
 			state = 0;
 		}
 	}
-	
+
+	/**
+	 * LOW GEAR
+	 */
 	public void on() {
 		shiftingNoid.set(true);
 	}
-	
+
+	/**
+	 * HIGH GEAR
+	 */
 	public void off() {
 		shiftingNoid.set(false);
 	}
