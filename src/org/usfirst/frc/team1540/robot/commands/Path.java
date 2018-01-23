@@ -45,7 +45,7 @@ public class Path extends Command {
     // 1000 is the amount of encoder ticks per full revolution
     // Wheel Diameter is the diameter of your wheels (or pulley for a track system) in meters
 
-    lInitial = Robot.drivetrain.left1.getQuadraturePosition();
+    lInitial = -Robot.drivetrain.left1.getQuadraturePosition();
     rInitial = Robot.drivetrain.right1.getQuadraturePosition();
 
     left.configureEncoder(lInitial, encoderTicksPerRev, wheelDiameter);
