@@ -24,6 +24,7 @@ public class PathfinderPlayground {
 
   final static double maxVelocity = 0.1;
   final static double maxAcceleration = 0.5;
+  final static double robotMaxVelocity = 2.6;
 
 //  Timer theTimer = new Timer();
 

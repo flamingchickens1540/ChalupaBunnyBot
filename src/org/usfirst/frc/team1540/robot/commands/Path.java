@@ -13,7 +13,7 @@ public class Path extends Command {
   // LOW
   // left: 25030, right: 25423... 25600?
   // (42/12)*(50/16)*1024 = 11200
-  final int encoderTicksPerRev = 11200;
+  final int encoderTicksPerRev = 1;
   final double wheelDiameter = 0.1;
   final double wheelbaseWidth = 0.62;
 
@@ -51,14 +51,19 @@ public class Path extends Command {
     left.configureEncoder(lInitial, encoderTicksPerRev, wheelDiameter);
     right.configureEncoder(rInitial, encoderTicksPerRev, wheelDiameter);
 
+    // Choose the greater maxV
+//    double maxV = (PathfinderPlayground.maxVelocity > PathfinderPlayground.robotMaxVelocity ?
+//        PathfinderPlayground.maxVelocity : PathfinderPlayground.robotMaxVelocity);
+    double maxV = 10000;
+
     // The first argument is the proportional gain. Usually this will be quite high
     // The second argument is the integral gain. This is unused for motion profiling
     // The third argument is the derivative gain. Tweak this if you are unhappy with the tracking of the trajectory
     // The fourth argument is the velocity ratio. This is 1 over the maximum velocity you provided in the
     //      trajectory configuration (it translates m/s to a -1 to 1 scale that your motors can read)
     // The fifth argument is your acceleration gain. Tweak this if you want to get to a higher or lower speed quicker
-    left.configurePIDVA(0.1, 0.0, 20.0, 1 / PathfinderPlayground.maxVelocity, 0);
-    right.configurePIDVA(0.1, 0.0, 20.0, 1 / PathfinderPlayground.maxVelocity, 0);
+    left.configurePIDVA(0.1, 0.0, 0.0, 0, 0);
+    right.configurePIDVA(0.1, 0.0, 0.0, 0, 0);
 
 //    theTimer.start();
   }

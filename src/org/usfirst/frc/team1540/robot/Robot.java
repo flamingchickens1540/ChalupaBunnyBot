@@ -37,7 +37,7 @@ public class Robot extends IterativeRobot {
   //public static LEDs led = new LEDs();
   public static OI oi;
 
-  Command autonomousCommand;
+  private Command autonomousCommand = new Path();
 //	SendableChooser<Command> chooser = new SendableChooser<>(); //Smartdashboard radio button
 
   @Override
@@ -105,7 +105,7 @@ public class Robot extends IterativeRobot {
 //		autonomousCommand = new AutoCommands();
 
 //		autonomousCommand.start();
-    Scheduler.getInstance().add(new Path());
+    Scheduler.getInstance().add(autonomousCommand);
 
   }
 
